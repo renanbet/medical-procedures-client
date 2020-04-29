@@ -1,0 +1,17 @@
+.container {
+    background-color: #0CA5B3;
+    height: 100vh;
+    .card {
+        border-radius: 20px;
+        width: 350px;
+        background: #fff;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+
+        .btn-login {
+            width: 100%;
+        }
+    }
+}

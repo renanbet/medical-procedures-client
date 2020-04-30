@@ -2,31 +2,38 @@
     <div class="card">
         <div class="card-content">
             <div class="content">
-                <form action="" id="login-form">
-                    <div class="field">
-                        <label class="label">Login</label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input" type="text" placeholder="Login" value="">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                        </div>
+                <div class="field">
+                    <label class="label">Login</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input 
+                            [(ngModel)]="username"
+                            class="input"
+                            type="text"
+                            placeholder="Login">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
                     </div>
-                    <div class="field">
-                        <label class="label">Senha</label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input type="password" class="input" type="text" placeholder="Senha" value="">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                        </div>
+                </div>
+                <div class="field">
+                    <label class="label">Senha</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input
+                            [(ngModel)]="password"
+                            type="password"
+                            class="input"
+                            type="text"
+                            placeholder="Senha">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
                     </div>
-                    <div class="field">
-                        <div class="control">
-                            <button (click)="goHome()" class="btn-login button is-primary">Entrar</button>
-                        </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button (click)="login()" class="btn-login button is-primary">Entrar</button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

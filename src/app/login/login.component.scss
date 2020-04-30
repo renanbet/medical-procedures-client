@@ -1,5 +1,7 @@
+@import '../../assets/vars';
+
 .container {
-    background-color: #0CA5B3;
+    background-color: $primary;
     height: 100vh;
     .card {
         border-radius: 20px;

@@ -6,7 +6,7 @@ import { MedicalProceduresComponent } from './medical-procedures/medical-procedu
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'procedures', component: MedicalProceduresComponent }
+  { path: 'procedimentos', component: MedicalProceduresComponent }
 ];
 
 @NgModule({

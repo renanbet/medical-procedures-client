@@ -1,1 +1,70 @@
-<p>medical-procedures works!</p>
+<app-navbar></app-navbar>
+<div class="container is-fluid">
+    <div class="columns">
+        <div class="column">
+            <app-card-counter title="Procedimentos pendentes" total=10></app-card-counter>
+        </div>
+        <div class="column">
+            <app-card-counter title="Procedimentos aprovados" total=10></app-card-counter>
+        </div>
+        <div class="column">
+            <app-card-counter title="Procedimentos reprovados" total=10></app-card-counter>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column">
+            <div class="card">
+                <div class="card-content">
+                    <div class="content">
+
+                        <div class="columns">
+                            <div class="column">
+
+
+                            </div>
+                            <div class="column">
+
+                            </div>
+                        </div>
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Procedimento</th>
+                                    <th>Sexo</th>
+                                    <th>Idade</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr *ngFor="let procedure of procedures; index as i;">
+                                    <th>{{procedure.procedimento}}</th>
+                                    <td>
+                                        {{procedure.status}}
+                                    </td>
+                                    <td>{{procedure.sexo}}</td>
+                                    <td>{{procedure.idade}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="buttons btn-fixed">
+        <button class="button is-primary">
+            <span class="icon is-large">
+                <i class="fas fa-2x fa-plus"></i>
+            </span>
+        </button>
+    </div>
+</div>

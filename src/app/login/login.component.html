@@ -5,7 +5,8 @@
                 <div class="field">
                     <label class="label">Login</label>
                     <div class="control has-icons-left has-icons-right">
-                        <input 
+                        <input
+                            (keyup.enter)="login"
                             [(ngModel)]="username"
                             class="input"
                             type="text"
@@ -19,6 +20,7 @@
                     <label class="label">Senha</label>
                     <div class="control has-icons-left has-icons-right">
                         <input
+                            (keyup.enter)="login"
                             [(ngModel)]="password"
                             type="password"
                             class="input"

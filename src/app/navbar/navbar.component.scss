@@ -1,0 +1,16 @@
+.navbar {
+    border-bottom: 1px solid #DADADA;
+    .navbar-start {
+        width: 100%;
+        @media (min-width: 1024px) {
+            padding: 6px 20% 0 20%;
+        }
+        @media (max-width: 1023px) {
+            padding: 0 0 10px 0;
+        }
+
+        .btn-search {
+            cursor: pointer;
+        }
+    }
+}

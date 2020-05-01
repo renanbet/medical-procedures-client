@@ -3,13 +3,16 @@
     <app-medical-procedure-details *ngIf="details" [details]="details"></app-medical-procedure-details>
     <div *ngIf="!details" class="columns">
         <div class="column">
-            <app-card-counter icon="fa-check" isSuccess="true" title="Aprovados" total=10></app-card-counter>
+            <app-card-counter class="filter" (click)="filterByApproved()" icon="fa-check" isSuccess="true" title="Aprovados" [total]="getApprovedTotal()"></app-card-counter>
         </div>
         <div class="column">
-            <app-card-counter icon="fa-ban" isDanger="true" title="Reprovados" total=10></app-card-counter>
+            <app-card-counter class="filter" (click)="filterByRepproved()" icon="fa-ban" isDanger="true" title="Reprovados" [total]="getDisapprovedTotal()"></app-card-counter>
         </div>
         <div class="column">
-            <app-card-counter icon="fa-question" isInfo="true" title="Pendentes" total=10></app-card-counter>
+            <app-card-counter class="filter" (click)="filterByPending()" icon="fa-question" isInfo="true" title="Pendentes" [total]="getPendingTotal()"></app-card-counter>
+        </div>
+        <div class="column">
+            <app-card-counter class="filter" (click)="all()" icon="fa-plus-square" title="Todos" [total]="getTotal()"></app-card-counter>
         </div>
     </div>
     <div *ngIf="!details" class="columns">
@@ -43,7 +46,7 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr *ngFor="let procedure of procedures; index as i;" (click)="showDetails(procedure)">
+                                <tr *ngFor="let procedure of showProcedures; index as i;" (click)="showDetails(procedure)">
                                     <td
                                         [title]="procedure.status"
                                         style="width: 5px">

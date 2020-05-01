@@ -12,4 +12,9 @@ export class CardCounterComponent {
   @Input() isInfo : boolean = false;
   @Input() isSuccess : boolean = false;
   @Input() isDanger : boolean = false;
+
+  formatValue() {
+    let format = `${this.total}`
+    return format.length < 2 ? `0${this.total}` : this.total
+  }
 }

@@ -5,6 +5,9 @@
         border: 1px solid $border;
         border-radius: 3px;
     }
+    .filter {
+        cursor: pointer;
+    }
     background-color: $background;
     height: 100vh;
     overflow-y: scroll;

@@ -3,6 +3,12 @@
 .card-counter {
     border: 1px solid $border;
     border-radius: 3px;
+    .media {
+        margin-bottom: 1px;
+    }
+    .content {
+        margin-left: 60px; 
+    }
     .card-title {
         text-align: center;
         font-size: 16px;

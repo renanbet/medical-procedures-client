@@ -79,11 +79,14 @@ export class MedicalProceduresComponent implements OnInit {
     }
   ]
 
+  public showProcedures = []
+
   public details: Object = null
 
   constructor() { }
 
   ngOnInit(): void {
+    this.showProcedures = this.procedures
   }
 
   showDetails(item): void {
@@ -113,5 +116,49 @@ export class MedicalProceduresComponent implements OnInit {
 
   isPending(procedure): boolean {
     return procedure.status === 'pendente'
+  }
+
+  filterByApproved() {
+    this.showProcedures = this.procedures.filter(item => {
+      return item.status === 'aprovado'
+    })
+  }
+
+  filterByRepproved() {
+    this.showProcedures = this.procedures.filter(item => {
+      return item.status === 'reprovado'
+    })
+  }
+
+  filterByPending() {
+    this.showProcedures = this.procedures.filter(item => {
+      return item.status === 'pendente'
+    })
+  }
+
+  all() {
+    this.showProcedures = this.procedures
+  }
+
+  getApprovedTotal() {
+    return this.procedures.filter(item => {
+      return item.status === 'aprovado'
+    }).length
+  }
+
+  getDisapprovedTotal() {
+    return this.procedures.filter(item => {
+      return item.status === 'reprovado'
+    }).length
+  }
+
+  getPendingTotal() {
+    return this.procedures.filter(item => {
+      return item.status === 'pendente'
+    }).length
+  }
+
+  getTotal() {
+    return this.procedures.length
   }
 }

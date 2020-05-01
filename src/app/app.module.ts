@@ -11,6 +11,11 @@ import { LoginComponent } from './login/login.component';
 import { MedicalProceduresComponent } from './medical-procedures/medical-procedures.component';
 import { MedicalProcedureDetailsComponent } from './medical-procedures/medical-procedure-details/medical-procedure-details.component';
 
+import { LoginService } from './services/login.service'
+import { MedicalProcedureService } from './services/medical-procedure.service'
+
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,8 +31,9 @@ import { MedicalProcedureDetailsComponent } from './medical-procedures/medical-p
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [LoginService, MedicalProcedureService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

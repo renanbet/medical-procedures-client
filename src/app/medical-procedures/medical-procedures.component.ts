@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MedicalProcedureService } from '../services/medical-procedure.service';
+import { MedicalProcedure } from '../models/medical-procedure';
 
 @Component({
   selector: 'app-medical-procedures',
@@ -6,87 +8,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./medical-procedures.component.scss']
 })
 export class MedicalProceduresComponent implements OnInit {
-  public procedures = [
-    {
-      id: 1,
-      procedimento: 1234,
-      status: 'aprovado',
-      sexo: 'Masculino',
-      idade: 23
-    },
-    {
-      id: 2,
-      procedimento: 4321,
-      status: 'aprovado',
-      sexo: 'Feminino',
-      idade: 23
-    },
-    {
-      id: 2,
-      procedimento: 4321,
-      status: 'aprovado',
-      sexo: 'Feminino',
-      idade: 23
-    },
-    {
-      id: 2,
-      procedimento: 4321,
-      status: 'aprovado',
-      sexo: 'Feminino',
-      idade: 23
-    },
-    {
-      id: 2,
-      procedimento: 4321,
-      status: 'aprovado',
-      sexo: 'Feminino',
-      idade: 23
-    },
-    {
-      id: 2,
-      procedimento: 4321,
-      status: 'aprovado',
-      sexo: 'Feminino',
-      idade: 23
-    },
-    {
-      id: 2,
-      procedimento: 4321,
-      status: 'pendente',
-      sexo: 'Feminino',
-      idade: 23
-    },
-    {
-      id: 2,
-      procedimento: 4321,
-      status: 'aprovado',
-      sexo: 'Feminino',
-      idade: 23
-    },
-    {
-      id: 2,
-      procedimento: 4321,
-      status: 'reprovado',
-      sexo: 'Feminino',
-      idade: 23
-    },
-    {
-      id: 2,
-      procedimento: 4321,
-      status: 'aprovado',
-      sexo: 'Feminino',
-      idade: 23
-    }
-  ]
+  public procedures = []
 
   public showProcedures = []
 
   public details: Object = null
 
-  constructor() { }
+  constructor(private medicalProceduresService: MedicalProcedureService) { }
 
   ngOnInit(): void {
-    this.showProcedures = this.procedures
+    this.load()
+  }
+
+  load() {
+    this.medicalProceduresService.getProcedures()
+    .subscribe((medicalProcedures: MedicalProcedure[]) => {
+      this.procedures = medicalProcedures.map(item => {
+        return {
+          id: item.id,
+          procedimento: item.procedimento,
+          idade: item.idade,
+          sexo: `${item.sexo.charAt(0).toUpperCase()}${item.sexo.substring(1)}`,
+          status: item.permitido.toLowerCase() === 'sim' ? 'aprovado' : 
+                  item.permitido.toLowerCase() === 'não' ? 'reprovado' : 'pendente'
+        }
+      })
+      this.showProcedures = this.procedures
+    })
   }
 
   showDetails(item): void {

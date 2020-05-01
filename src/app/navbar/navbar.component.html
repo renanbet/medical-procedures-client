@@ -1,6 +1,27 @@
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="container is-fluid">
         <div class="navbar-brand">
+            <div class="dropdown"
+                (click)="toggleMenu()"
+                [ngClass]="{'is-active': showMenu}">
+                <div class="dropdown-trigger">
+                    <button 
+                        class="button menu-options"
+                        aria-haspopup="true"
+                        aria-controls="dropdown-menu2">
+                        <span class="icon is-large">
+                            <i class="fas fa-bars"></i>
+                        </span>
+                    </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                    <div class="dropdown-content">
+                        <a href="#" (click)="logout" class="dropdown-item">
+                            Sair
+                        </a>
+                    </div>
+                </div>
+            </div>
             <a class="navbar-item">
                 Procedimentos Médicos
             </a>

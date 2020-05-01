@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MedicalProceduresComponent } from './medical-procedures/medical-procedures.component';
 import { CardCounterComponent } from './card-counter/card-counter.component';
 import { LoginComponent } from './login/login.component';
+import { MedicalProcedureComponent } from './medical-procedures/medical-procedure/medical-procedure.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LoginComponent } from './login/login.component';
     NavbarComponent,
     MedicalProceduresComponent,
     CardCounterComponent,
-    LoginComponent
+    LoginComponent,
+    MedicalProcedureComponent
   ],
   imports: [
     BrowserModule,

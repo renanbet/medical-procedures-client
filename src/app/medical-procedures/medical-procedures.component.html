@@ -37,6 +37,11 @@
                                     <th>Idade</th>
                                 </tr>
                             </thead>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4"></td>
+                                </tr>
+                            </tfoot>
                             <tbody>
                                 <tr *ngFor="let procedure of procedures; index as i;" (click)="showDetails(procedure)">
                                     <td
@@ -49,7 +54,7 @@
                                             'fa-question': isPending(procedure)}"></i>
                                         </span>
                                     </td>
-                                    <th>{{procedure.procedimento}}</th>
+                                    <td>{{procedure.procedimento}}</td>
                                     <td>{{procedure.sexo}}</td>
                                     <td>{{procedure.idade}}</td>
                                 </tr>

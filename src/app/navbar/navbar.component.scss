@@ -1,5 +1,7 @@
+@import '../../assets/vars';
+
 .navbar {
-    border-bottom: 1px solid #DADADA;
+    border-bottom: 1px solid $border;
     .navbar-start {
         width: 100%;
         @media (min-width: 1024px) {

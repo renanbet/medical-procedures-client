@@ -1,6 +1,10 @@
 @import '../../assets/vars';
 
 .container {
+    .card {
+        border: 1px solid $border;
+        border-radius: 3px;
+    }
     background-color: $background;
     height: 100vh;
     overflow-y: scroll;
@@ -23,7 +27,21 @@
             border-radius: 50%;
         }
     }
+    table {
+        tbody {
+            tr {
+                &:hover {
+                    background-color: #EBEBEB;
+                    cursor: pointer;
+                }
+                td {
+                    padding: 15px;
+                }
+            }
+        }
+    }
 }
 .nav-bottom {
-    border-top: 1px solid #DADADA;
+    border-top: 1px solid $border;
+    height: 40px;
 }

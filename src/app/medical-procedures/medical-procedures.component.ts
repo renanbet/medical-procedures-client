@@ -12,7 +12,7 @@ export class MedicalProceduresComponent implements OnInit {
 
   public showProcedures = []
 
-  public details: Object = null
+  public details: MedicalProcedure = null
 
   constructor(private medicalProceduresService: MedicalProcedureService) { }
 
@@ -29,12 +29,17 @@ export class MedicalProceduresComponent implements OnInit {
           procedimento: item.procedimento,
           idade: item.idade,
           sexo: `${item.sexo.charAt(0).toUpperCase()}${item.sexo.substring(1)}`,
-          status: item.permitido.toLowerCase() === 'sim' ? 'aprovado' : 
-                  item.permitido.toLowerCase() === 'não' ? 'reprovado' : 'pendente'
+          status: this.getStatus(item.permitido),
+          permitido: item.permitido
         }
       })
       this.showProcedures = this.procedures
     })
+  }
+
+  getStatus(permitted) {
+    return permitted.toLowerCase() === 'sim' ? 'Aprovado' : 
+              permitted.toLowerCase() === 'não' ? 'Reprovado' : 'Pendente'
   }
 
   showDetails(item): void {
@@ -43,9 +48,9 @@ export class MedicalProceduresComponent implements OnInit {
     else
       this.details = {
         id: 0,
-        procedimento: '',
-        status: 'pendente',
-        idade: '',
+        procedimento: 0,
+        permitido: '',
+        idade: 0,
         sexo: ''
       }
   }
@@ -55,32 +60,32 @@ export class MedicalProceduresComponent implements OnInit {
   }
 
   isApproved(procedure): boolean {
-    return procedure.status === 'aprovado'
+    return procedure.permitido.toLowerCase() === 'sim'
   }
 
   isDisapproved(procedure): boolean {
-    return procedure.status === 'reprovado'
+    return procedure.permitido.toLowerCase() === 'não'
   }
 
   isPending(procedure): boolean {
-    return procedure.status === 'pendente'
+    return procedure.permitido.toLowerCase() === ''
   }
 
   filterByApproved() {
     this.showProcedures = this.procedures.filter(item => {
-      return item.status === 'aprovado'
+      return item.permitido.toLowerCase() === 'sim'
     })
   }
 
   filterByRepproved() {
     this.showProcedures = this.procedures.filter(item => {
-      return item.status === 'reprovado'
+      return item.permitido.toLowerCase() === 'não'
     })
   }
 
   filterByPending() {
     this.showProcedures = this.procedures.filter(item => {
-      return item.status === 'pendente'
+      return item.permitido === ''
     })
   }
 
@@ -90,19 +95,19 @@ export class MedicalProceduresComponent implements OnInit {
 
   getApprovedTotal() {
     return this.procedures.filter(item => {
-      return item.status === 'aprovado'
+      return item.permitido.toLowerCase() === 'sim'
     }).length
   }
 
   getDisapprovedTotal() {
     return this.procedures.filter(item => {
-      return item.status === 'reprovado'
+      return item.permitido.toLowerCase() === 'não'
     }).length
   }
 
   getPendingTotal() {
     return this.procedures.filter(item => {
-      return item.status === 'pendente'
+      return item.permitido === ''
     }).length
   }
 

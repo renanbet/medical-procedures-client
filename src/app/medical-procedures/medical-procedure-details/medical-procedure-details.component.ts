@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MedicalProcedureService } from '../../services/medical-procedure.service';
+import { MedicalProcedure } from '../../models/medical-procedure';
 
 @Component({
   selector: 'app-medical-procedure-details',
@@ -6,15 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./medical-procedure-details.component.scss']
 })
 export class MedicalProcedureDetailsComponent implements OnInit {
-  @Input() details: Object = {
+  @Input() details: MedicalProcedure = {
     id: 0,
-    procedimento: '',
-    status: 'pendente',
-    idade: '',
+    procedimento: 0,
+    permitido: '',
+    idade: 0,
     sexo: ''
   }
 
-  constructor() { }
+  constructor(private medicalProceduresService: MedicalProcedureService) { }
 
   ngOnInit(): void {}
 
@@ -25,29 +27,29 @@ export class MedicalProcedureDetailsComponent implements OnInit {
 
   approve() {
     if (this.isAdmin())
-      this.details.status = 'aprovado'
+      this.details.permitido = 'Sim'
   }
 
   pending() {
     if (this.isAdmin())
-      this.details.status = 'pendente'
+      this.details.permitido = ''
   }
 
   disapprove() {
     if (this.isAdmin())
-      this.details.status = 'reprovado'
+      this.details.permitido = 'Não'
   }
 
   isApproved(): boolean {
-    return this.details.status === 'aprovado'
+    return this.details.permitido.toLowerCase() === 'sim'
   }
 
   isRepproved(): boolean {
-    return this.details.status === 'reprovado'
+    return this.details.permitido.toLowerCase() === 'não'
   }
 
   isPending(): boolean {
-    return this.details.status === 'pendente'
+    return this.details.permitido === ''
   }
 
 }

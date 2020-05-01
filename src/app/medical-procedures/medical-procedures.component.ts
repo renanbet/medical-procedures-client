@@ -78,9 +78,20 @@ export class MedicalProceduresComponent implements OnInit {
       idade: 23
     }
   ]
+
+  public details: Object = null
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  showDetails(item): void {
+    this.details = item
+  }
+
+  closeDetails(): void {
+    this.details = null
   }
 
 }

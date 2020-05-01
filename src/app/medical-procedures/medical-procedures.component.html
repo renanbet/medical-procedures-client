@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container is-fluid">
-    <div class="columns">
+    <app-medical-procedure *ngIf="details" [details]="details"></app-medical-procedure>
+    <div *ngIf="!details" class="columns">
         <div class="column">
             <app-card-counter title="Procedimentos pendentes" total=10></app-card-counter>
         </div>
@@ -11,7 +12,7 @@
             <app-card-counter title="Procedimentos reprovados" total=10></app-card-counter>
         </div>
     </div>
-    <div class="columns">
+    <div *ngIf="!details" class="columns">
         <div class="column">
             <div class="card">
                 <div class="card-content">
@@ -30,8 +31,8 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Status</th>
                                     <th>Procedimento</th>
+                                    <th>Status</th>
                                     <th>Sexo</th>
                                     <th>Idade</th>
                                 </tr>
@@ -45,7 +46,7 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr *ngFor="let procedure of procedures; index as i;">
+                                <tr *ngFor="let procedure of procedures; index as i;" (click)="showDetails(procedure)">
                                     <th>{{procedure.procedimento}}</th>
                                     <td>
                                         {{procedure.status}}
@@ -61,10 +62,25 @@
         </div>
     </div>
     <div class="buttons btn-fixed">
-        <button class="button is-primary">
+        <button class="button is-primary" *ngIf="!details">
             <span class="icon is-large">
                 <i class="fas fa-2x fa-plus"></i>
             </span>
         </button>
+        <button 
+            (click)="closeDetails()"
+            class="button is-primary" 
+            *ngIf="details">
+            <span class="icon is-large">
+                <i class="fas fa-2x fa-check"></i>
+            </span>
+        </button>
     </div>
 </div>
+<nav class="navbar nav-bottom is-fixed-bottom">
+    <div class="navbar-brand">
+        <a class="navbar-item">
+            Copyright
+        </a>
+    </div>
+</nav>

@@ -52,7 +52,7 @@ export class MedicalProceduresComponent implements OnInit {
     {
       id: 2,
       procedimento: 4321,
-      status: 'aprovado',
+      status: 'pendente',
       sexo: 'Feminino',
       idade: 23
     },
@@ -66,7 +66,7 @@ export class MedicalProceduresComponent implements OnInit {
     {
       id: 2,
       procedimento: 4321,
-      status: 'aprovado',
+      status: 'reprovado',
       sexo: 'Feminino',
       idade: 23
     },
@@ -87,7 +87,16 @@ export class MedicalProceduresComponent implements OnInit {
   }
 
   showDetails(item): void {
-    this.details = item
+    if(item)
+      this.details = item
+    else
+      this.details = {
+        id: 0,
+        procedimento: '',
+        status: 'pendente',
+        idade: '',
+        sexo: ''
+      }
   }
 
   closeDetails(): void {

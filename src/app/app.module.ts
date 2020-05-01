@@ -6,10 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MedicalProceduresComponent } from './medical-procedures/medical-procedures.component';
 import { CardCounterComponent } from './card-counter/card-counter.component';
 import { LoginComponent } from './login/login.component';
-import { MedicalProcedureComponent } from './medical-procedures/medical-procedure/medical-procedure.component';
+import { MedicalProceduresComponent } from './medical-procedures/medical-procedures.component';
+import { MedicalProcedureDetailsComponent } from './medical-procedures/medical-procedure-details/medical-procedure-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { MedicalProcedureComponent } from './medical-procedures/medical-procedur
     MedicalProceduresComponent,
     CardCounterComponent,
     LoginComponent,
-    MedicalProcedureComponent
+    MedicalProcedureDetailsComponent
   ],
   imports: [
     BrowserModule,

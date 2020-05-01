@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container is-fluid">
-    <app-medical-procedure *ngIf="details" [details]="details"></app-medical-procedure>
+    <app-medical-procedure-details *ngIf="details" [details]="details"></app-medical-procedure-details>
     <div *ngIf="!details" class="columns">
         <div class="column">
             <app-card-counter title="Procedimentos pendentes" total=10></app-card-counter>
@@ -62,7 +62,9 @@
         </div>
     </div>
     <div class="buttons btn-fixed">
-        <button class="button is-primary" *ngIf="!details">
+        <button class="button is-primary"
+            (click)="showDetails()"
+            *ngIf="!details">
             <span class="icon is-large">
                 <i class="fas fa-2x fa-plus"></i>
             </span>

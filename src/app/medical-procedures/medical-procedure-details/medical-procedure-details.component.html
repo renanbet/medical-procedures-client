@@ -4,35 +4,35 @@
             <div class="field">
                 <label class="label">Procedimento</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Procedimento">
+                    <input [(ngModel)]="details.procedimento" class="input" type="number" placeholder="Procedimento">
                 </div>
             </div>
             <div class="field">
                 <label class="label">Sexo</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Sexo">
+                    <div class="select">
+                        <select [(ngModel)]="details.sexo">
+                            <option value="">Selecione</option>
+                            <option value="Feminino">Feminino</option>
+                            <option value="Masculino">Masculino</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="field">
                 <label class="label">Idade</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Idade">
+                    <input [(ngModel)]="details.idade" class="input" type="number" placeholder="Idade">
                 </div>
             </div>
             <div class="field">
                 <label class="label">Status</label>
                 <div class="buttons has-addons">
-                    <button class="button"
-                        (click)="approve()"
-                        [ngClass]="{'is-success': isApproved()}">
+                    <button class="button" (click)="approve()" [ngClass]="{'is-success': isApproved()}">
                         Aprovado</button>
-                    <button class="button"
-                        (click)="pending()"
-                        [ngClass]="{'is-info': isPending()}">
+                    <button class="button" (click)="pending()" [ngClass]="{'is-info': isPending()}">
                         Pendente</button>
-                    <button class="button"
-                        (click)="disapprove()"
-                        [ngClass]="{'is-danger': isRepproved()}">
+                    <button class="button" (click)="disapprove()" [ngClass]="{'is-danger': isRepproved()}">
                         Reprovado</button>
                 </div>
             </div>

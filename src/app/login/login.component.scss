@@ -1,6 +1,12 @@
 @import '../../assets/vars';
 
 .container {
+    .system-title {
+        color: #393939;
+        margin-bottom: 30px;
+        font-weight: bold;
+        font-size: 18px;
+    }
     background-color: $primary;
     height: 100vh;
     .card {

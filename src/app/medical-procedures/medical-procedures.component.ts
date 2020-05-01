@@ -103,4 +103,15 @@ export class MedicalProceduresComponent implements OnInit {
     this.details = null
   }
 
+  isApproved(procedure): boolean {
+    return procedure.status === 'aprovado'
+  }
+
+  isDisapproved(procedure): boolean {
+    return procedure.status === 'reprovado'
+  }
+
+  isPending(procedure): boolean {
+    return procedure.status === 'pendente'
+  }
 }

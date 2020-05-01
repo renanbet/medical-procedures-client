@@ -3,13 +3,13 @@
     <app-medical-procedure-details *ngIf="details" [details]="details"></app-medical-procedure-details>
     <div *ngIf="!details" class="columns">
         <div class="column">
-            <app-card-counter title="Procedimentos pendentes" total=10></app-card-counter>
+            <app-card-counter icon="fa-check" isSuccess="true" title="Aprovados" total=10></app-card-counter>
         </div>
         <div class="column">
-            <app-card-counter title="Procedimentos aprovados" total=10></app-card-counter>
+            <app-card-counter icon="fa-ban" isDanger="true" title="Reprovados" total=10></app-card-counter>
         </div>
         <div class="column">
-            <app-card-counter title="Procedimentos reprovados" total=10></app-card-counter>
+            <app-card-counter icon="fa-question" isInfo="true" title="Pendentes" total=10></app-card-counter>
         </div>
     </div>
     <div *ngIf="!details" class="columns">
@@ -31,26 +31,25 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Procedimento</th>
                                     <th>Status</th>
+                                    <th>Procedimento</th>
                                     <th>Sexo</th>
                                     <th>Idade</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
                             <tbody>
                                 <tr *ngFor="let procedure of procedures; index as i;" (click)="showDetails(procedure)">
-                                    <th>{{procedure.procedimento}}</th>
-                                    <td>
-                                        {{procedure.status}}
+                                    <td
+                                        [title]="procedure.status"
+                                        style="width: 5px">
+                                        <span class="icon">
+                                            <i class="fas"
+                                            [ngClass]="{'fa-check': isApproved(procedure),
+                                            'fa-ban': isDisapproved(procedure),
+                                            'fa-question': isPending(procedure)}"></i>
+                                        </span>
                                     </td>
+                                    <th>{{procedure.procedimento}}</th>
                                     <td>{{procedure.sexo}}</td>
                                     <td>{{procedure.idade}}</td>
                                 </tr>
@@ -62,17 +61,12 @@
         </div>
     </div>
     <div class="buttons btn-fixed">
-        <button class="button is-primary"
-            (click)="showDetails()"
-            *ngIf="!details">
+        <button class="button is-primary" (click)="showDetails()" *ngIf="!details">
             <span class="icon is-large">
                 <i class="fas fa-2x fa-plus"></i>
             </span>
         </button>
-        <button 
-            (click)="closeDetails()"
-            class="button is-primary" 
-            *ngIf="details">
+        <button (click)="closeDetails()" class="button is-primary" *ngIf="details">
             <span class="icon is-large">
                 <i class="fas fa-2x fa-check"></i>
             </span>

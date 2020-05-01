@@ -9,4 +9,7 @@ export class CardCounterComponent {
   @Input() title : string;
   @Input() total : number;
   @Input() icon : string;
+  @Input() isInfo : boolean = false;
+  @Input() isSuccess : boolean = false;
+  @Input() isDanger : boolean = false;
 }

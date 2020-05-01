@@ -1,8 +1,18 @@
-<div class="card">
+<div class="card-counter card">
     <div class="card-content">
-        <div class="content">
-            {{title}}
-            {{total}}
+        <div class="media">
+            <div class="media-left">
+                <span [ngClass]="{'has-text-success': isSuccess,
+                    'has-text-danger': isDanger,
+                    'has-text-info': isInfo}"
+                    class="icon is-large  is-pulled-right">
+                    <i class="fas fa-2x" [ngClass]="icon"></i>
+                </span>
+            </div>
+            <div class="media-content">
+                <p class="title">{{total}}</p>
+                <p class="subtitle is-6">{{title}}</p>
+            </div>
         </div>
     </div>
 </div>

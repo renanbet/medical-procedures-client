@@ -1,0 +1,11 @@
+.btn-fixed {
+    bottom: 60px;
+    right: 50px;
+    position: fixed;
+    display:block;
+    .button {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+    }
+}

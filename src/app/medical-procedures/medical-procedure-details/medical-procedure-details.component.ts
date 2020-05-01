@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MedicalProcedureService } from '../../services/medical-procedure.service';
 import { MedicalProcedure } from '../../models/medical-procedure';
 
@@ -8,6 +8,7 @@ import { MedicalProcedure } from '../../models/medical-procedure';
   styleUrls: ['./medical-procedure-details.component.scss']
 })
 export class MedicalProcedureDetailsComponent implements OnInit {
+  @Output() close = new EventEmitter<boolean>();
   @Input() details: MedicalProcedure = {
     id: 0,
     procedimento: 0,
@@ -19,6 +20,18 @@ export class MedicalProcedureDetailsComponent implements OnInit {
   constructor(private medicalProceduresService: MedicalProcedureService) { }
 
   ngOnInit(): void {}
+
+  save(): void {
+    if (this.details.id !== 0) {
+      this.medicalProceduresService.update(this.details.id, this.details).subscribe(() => {
+        this.close.next(true)
+      });
+    } else {
+      this.medicalProceduresService.insert(this.details).subscribe(() => {
+        this.close.next(true)
+      });
+    }
+  }
 
   isAdmin() {
     let user = JSON.parse(localStorage.getItem('user'))
@@ -50,6 +63,10 @@ export class MedicalProcedureDetailsComponent implements OnInit {
 
   isPending(): boolean {
     return this.details.permitido === ''
+  }
+
+  isNew(): boolean {
+    return this.details.id === 0
   }
 
 }

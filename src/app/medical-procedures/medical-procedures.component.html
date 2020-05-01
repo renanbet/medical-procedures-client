@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container is-fluid">
-    <app-medical-procedure-details *ngIf="details" [details]="details"></app-medical-procedure-details>
+    <app-medical-procedure-details 
+        (close)="closeDetails($event)" *ngIf="details" [details]="details"></app-medical-procedure-details>
     <div *ngIf="!details" class="columns">
         <div class="column">
             <app-card-counter class="filter" (click)="filterByApproved()" icon="fa-check" isSuccess="true" title="Aprovados" [total]="getApprovedTotal()"></app-card-counter>
@@ -68,15 +69,10 @@
             </div>
         </div>
     </div>
-    <div class="buttons btn-fixed">
+    <div class="buttons btn-fixed" *ngIf="!details">
         <button class="button is-primary" (click)="showDetails()" *ngIf="!details">
             <span class="icon is-large">
                 <i class="fas fa-2x fa-plus"></i>
-            </span>
-        </button>
-        <button (click)="closeDetails()" class="button is-primary" *ngIf="details">
-            <span class="icon is-large">
-                <i class="fas fa-2x fa-check"></i>
             </span>
         </button>
     </div>

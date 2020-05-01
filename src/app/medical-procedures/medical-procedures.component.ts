@@ -55,7 +55,10 @@ export class MedicalProceduresComponent implements OnInit {
       }
   }
 
-  closeDetails(): void {
+  closeDetails(data): void {
+    if (data) {
+      this.load()
+    }
     this.details = null
   }
 

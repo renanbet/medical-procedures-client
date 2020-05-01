@@ -5,16 +5,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NavbarComponent } from './navbar/navbar.component';
-import { CardCounterComponent } from './card-counter/card-counter.component';
-import { LoginComponent } from './login/login.component';
-import { MedicalProceduresComponent } from './medical-procedures/medical-procedures.component';
-import { MedicalProcedureDetailsComponent } from './medical-procedures/medical-procedure-details/medical-procedure-details.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { CardCounterComponent } from './components/card-counter/card-counter.component';
+import { LoginComponent } from './components/login/login.component';
+import { MedicalProceduresComponent } from './components/medical-procedures/medical-procedures.component';
+import { MedicalProcedureDetailsComponent } from './components/medical-procedures/medical-procedure-details/medical-procedure-details.component';
 
 import { LoginService } from './services/login.service'
 import { MedicalProcedureService } from './services/medical-procedure.service'
 
 import { HttpClientModule } from '@angular/common/http';
+
+import { StoreModule } from '@ngrx/store';
+import { reducer as searchReducer } from './ngrx'
 
 @NgModule({
   declarations: [
@@ -31,7 +34,11 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({
+      searchReducer
+    })
   ],
   providers: [LoginService, MedicalProcedureService],
   bootstrap: [AppComponent]

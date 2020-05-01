@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { setSearch } from 'src/app/ngrx';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +10,10 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   showMenu: boolean = false
-  constructor(private router: Router) { }
+  public search: string = ''
+
+  constructor(private router: Router,
+    private store: Store) { }
 
   ngOnInit(): void {
   }
@@ -20,5 +25,15 @@ export class NavbarComponent implements OnInit {
   logout() {
     localStorage.removeItem('user');
     this.router.navigate(['/']);
+  }
+
+  async globalSearch() {
+    this.store.dispatch(new setSearch(this.search))
+  }
+
+  cleanGlobalSearch () {
+    if (this.search === '') {
+      this.globalSearch()
+    }
   }
 }

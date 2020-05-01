@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MedicalProcedureService } from '../../services/medical-procedure.service';
-import { MedicalProcedure } from '../../models/medical-procedure';
+import { MedicalProcedureService } from 'src/app/services/medical-procedure.service';
+import { MedicalProcedure } from 'src/app/models/medical-procedure';
 
 @Component({
   selector: 'app-medical-procedure-details',

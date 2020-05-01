@@ -28,7 +28,13 @@
         </div>
         <div class="navbar-start">
             <div class="control has-icons-left has-icons-right search">
-                <input class="input " type="text" placeholder="Buscar procedimento">
+                <input 
+                    [(ngModel)]="search"
+                    (keyup.enter)="globalSearch()"
+                    (keyup.backspace)="cleanGlobalSearch()"
+                    class="input"
+                    type="text"
+                    placeholder="Buscar procedimento">
                 <span class="icon is-left ">
                     <i class="fas fa-search"></i>
                 </span>

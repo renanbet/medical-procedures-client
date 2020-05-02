@@ -4,7 +4,8 @@
             <div class="field">
                 <label class="label">Procedimento</label>
                 <div class="control">
-                    <input [(ngModel)]="details.procedimento" class="input" type="number" placeholder="Procedimento">
+                    <input (click)="$event.target.select()" [(ngModel)]="details.procedimento" class="input" type="number"
+                        placeholder="Procedimento">
                 </div>
             </div>
             <div class="field">
@@ -22,7 +23,8 @@
             <div class="field">
                 <label class="label">Idade</label>
                 <div class="control">
-                    <input [(ngModel)]="details.idade" class="input" type="number" placeholder="Idade">
+                    <input (click)="$event.target.select()" [(ngModel)]="details.idade" class="input" type="number"
+                        placeholder="Idade">
                 </div>
             </div>
             <div class="field">

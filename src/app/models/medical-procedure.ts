@@ -4,4 +4,5 @@ export interface MedicalProcedure {
     permitido: string
     sexo: string
     idade: number
+    motivo: string
 }

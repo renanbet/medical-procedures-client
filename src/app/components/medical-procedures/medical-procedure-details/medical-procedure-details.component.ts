@@ -14,7 +14,8 @@ export class MedicalProcedureDetailsComponent implements OnInit {
     procedimento: 0,
     permitido: '',
     idade: 0,
-    sexo: ''
+    sexo: '',
+    motivo: ''
   }
   public title = 'Novo procedimento'
 

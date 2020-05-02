@@ -4,8 +4,6 @@
             <div class="columns header">
                 <div class="column header-title">
                     <b>{{title}}</b>
-                </div>
-                <div class="column">
                     <button class="button back is-pulled-right" (click)="back()">
                         <span class="icon">
                             <i class="fas fa-1x fa-arrow-left"></i>
@@ -48,6 +46,18 @@
                         Pendente</button>
                     <button class="button" *ngIf="!isNew()" (click)="disapprove()" [ngClass]="{'is-danger': isRepproved()}">
                         Reprovado</button>
+                </div>
+            </div>
+            <div class="field" *ngIf="isRepproved()">
+                <label class="label">Motivo</label>
+                <div class="control">
+                    <textarea 
+                    [readonly]="!isAdmin()"
+                    class="textarea" 
+                    [(ngModel)]="details.motivo"
+                    placeholder="Motivo"
+                    rows="3">
+                    </textarea>
                 </div>
             </div>
         </div>

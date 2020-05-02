@@ -46,7 +46,23 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should have title', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.system-title').innerHTML).toMatch('Procedimentos médicos');
+  });
+
+  it('should have username input', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.input').placeholder).toMatch('Login');
+  });
+
+  it('should have password input', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.input').placeholder).toMatch('Password');
+  });
+
+  it('should have login button', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.btn-login').innerHTML).toMatch('Entrar');
   });
 });

@@ -16,10 +16,15 @@ export class MedicalProcedureDetailsComponent implements OnInit {
     idade: 0,
     sexo: ''
   }
+  public title = 'Novo procedimento'
 
   constructor(private medicalProceduresService: MedicalProcedureService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.details.id !== 0) {
+      this.title = `Procedimento ${this.details.procedimento}`
+    }
+  }
 
   save(): void {
     if (this.details.id !== 0) {
@@ -31,6 +36,10 @@ export class MedicalProcedureDetailsComponent implements OnInit {
         this.close.next(true)
       });
     }
+  }
+
+  back () {
+    this.close.next(false)
   }
 
   isAdmin() {
@@ -68,5 +77,4 @@ export class MedicalProcedureDetailsComponent implements OnInit {
   isNew(): boolean {
     return this.details.id === 0
   }
-
 }

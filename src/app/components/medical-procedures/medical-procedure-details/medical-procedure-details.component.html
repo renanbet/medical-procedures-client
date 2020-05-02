@@ -1,7 +1,19 @@
 <div class="card">
     <div class="card-content">
         <div class="content">
-            <div class="field">
+            <div class="columns header">
+                <div class="column header-title">
+                    <b>{{title}}</b>
+                </div>
+                <div class="column">
+                    <button class="button back is-pulled-right" (click)="back()">
+                        <span class="icon">
+                            <i class="fas fa-1x fa-arrow-left"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="field" *ngIf="details.id === 0">
                 <label class="label">Procedimento</label>
                 <div class="control">
                     <input (click)="$event.target.select()" [(ngModel)]="details.procedimento" class="input" type="number"
@@ -23,8 +35,8 @@
             <div class="field">
                 <label class="label">Idade</label>
                 <div class="control">
-                    <input (click)="$event.target.select()" [(ngModel)]="details.idade" class="input" type="number"
-                        placeholder="Idade">
+                    <input (click)="$event.target.select()" [(ngModel)]="details.idade" class="input"
+                        type="number" placeholder="Idade">
                 </div>
             </div>
             <div class="field">

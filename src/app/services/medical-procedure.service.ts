@@ -7,22 +7,29 @@ import { MedicalProcedure } from '../models/medical-procedure';
 @Injectable({
   providedIn: 'root'
 })
-export class MedicalProcedureService {
+export class MedicalProcedureService {  
+  public apiUrl: string = 'http://localhost:3001/procedures';
 
-  apiUrl: string = 'http://localhost:3001/procedures';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
+  getHeaders() {
+    let user = JSON.parse(localStorage.getItem('user'))
+    return {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization':  user.token
+      })
+    }
+  }
   getProcedures(): Observable<MedicalProcedure[]> {
-    return this.http.get<MedicalProcedure[]>(`${this.apiUrl}`)
+    return this.http.get<MedicalProcedure[]>(`${this.apiUrl}`, this.getHeaders())
       .pipe(
         catchError(this.error))
   }
 
   insert(data): Observable<any> {
     let API_URL = `${this.apiUrl}`;
-    return this.http.post<MedicalProcedure>(API_URL, data)
+    return this.http.post<MedicalProcedure>(API_URL, data, this.getHeaders())
       .pipe(
         catchError(this.error)
       )
@@ -30,7 +37,7 @@ export class MedicalProcedureService {
 
   update(id, data): Observable<any> {
     let API_URL = `${this.apiUrl}/${id}`;
-    return this.http.put<MedicalProcedure>(API_URL, data, { headers: this.headers }).pipe(
+    return this.http.put<MedicalProcedure>(API_URL, data, this.getHeaders()).pipe(
       catchError(this.error)
     )
   }

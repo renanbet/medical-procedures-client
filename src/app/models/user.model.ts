@@ -1,2 +1,4 @@
-export interface User {
+export interface UserModel {
+    role: string,
+    token: string
 }

@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
   providedIn: 'root'
 })
 export class LoginService {
-  apiUrl: string = 'http://localhost:3000/users';
+  apiUrl: string = 'http://localhost:3001/users';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }

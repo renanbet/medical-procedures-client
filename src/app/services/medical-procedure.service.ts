@@ -14,10 +14,11 @@ export class MedicalProcedureService {
 
   getHeaders() {
     let user = JSON.parse(localStorage.getItem('user'))
+    let token = user ? user.token : ''
     return {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        'Authorization':  user.token
+        'Authorization':  token
       })
     }
   }
@@ -43,13 +44,10 @@ export class MedicalProcedureService {
   }
 
   error(error: HttpErrorResponse) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = error.error.message;
-    } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    localStorage.removeItem('user')
+    if (error.status === 403) {
+      window.location.href = '/'
     }
-    console.log(errorMessage);
-    return throwError(errorMessage);
+    return throwError(error);
   }
 }

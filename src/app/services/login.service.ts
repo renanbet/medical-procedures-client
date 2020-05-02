@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
@@ -7,13 +7,13 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
   providedIn: 'root'
 })
 export class LoginService {
-  apiUrl: string = 'http://localhost:3001/users';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    @Inject('API_URL') private apiUrl: string) { }
 
   login(username, password): Observable<any> {
-    let API_URL = `${this.apiUrl}/login`;
+    let API_URL = `${this.apiUrl}/users/login`;
     return this.http.post(API_URL, { username, password })
       .pipe(
         catchError(this.error)

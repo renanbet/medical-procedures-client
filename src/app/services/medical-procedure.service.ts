@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
@@ -8,9 +8,8 @@ import { MedicalProcedure } from '../models/medical-procedure';
   providedIn: 'root'
 })
 export class MedicalProcedureService {  
-  public apiUrl: string = 'http://localhost:3001/procedures';
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    @Inject('API_URL') private apiUrl: string) { }
 
   getHeaders() {
     let user = JSON.parse(localStorage.getItem('user'))
@@ -23,13 +22,13 @@ export class MedicalProcedureService {
     }
   }
   getProcedures(): Observable<MedicalProcedure[]> {
-    return this.http.get<MedicalProcedure[]>(`${this.apiUrl}`, this.getHeaders())
+    return this.http.get<MedicalProcedure[]>(`${this.apiUrl}/procedures`, this.getHeaders())
       .pipe(
         catchError(this.error))
   }
 
   insert(data): Observable<any> {
-    let API_URL = `${this.apiUrl}`;
+    let API_URL = `${this.apiUrl}/procedures`;
     return this.http.post<MedicalProcedure>(API_URL, data, this.getHeaders())
       .pipe(
         catchError(this.error)
@@ -37,7 +36,7 @@ export class MedicalProcedureService {
   }
 
   update(id, data): Observable<any> {
-    let API_URL = `${this.apiUrl}/${id}`;
+    let API_URL = `${this.apiUrl}/procedures/${id}`;
     return this.http.put<MedicalProcedure>(API_URL, data, this.getHeaders()).pipe(
       catchError(this.error)
     )

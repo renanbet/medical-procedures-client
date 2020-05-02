@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "node config/config-env && ng serve",
+    "build": "node config/config-env && ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -25,6 +25,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@ngrx/store": "^9.1.0",
     "bulma": "^0.8.2",
+    "dotenv": "^8.2.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { reducer as searchReducer } from './ngrx'
 
+import { environment } from 'src/environments/environment'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,8 @@ import { reducer as searchReducer } from './ngrx'
       searchReducer
     })
   ],
-  providers: [LoginService, MedicalProcedureService],
+  providers: [LoginService, MedicalProcedureService,
+  { provide: 'API_URL', useValue: environment.apiUrl }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

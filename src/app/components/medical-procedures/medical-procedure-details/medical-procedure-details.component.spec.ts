@@ -28,6 +28,46 @@ describe('MedicalProcedureDetailsComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should have save method', () => {
+    expect(component.save).toBeTruthy();
+  });
+
+  it('should have back method', () => {
+    expect(component.back).toBeTruthy();
+  });
+
+  it('should have isAdmin method', () => {
+    expect(component.isAdmin).toBeTruthy();
+  });
+
+  it('should have approve method', () => {
+    expect(component.approve).toBeTruthy();
+  });
+
+  it('should have pending method', () => {
+    expect(component.pending).toBeTruthy();
+  });
+
+  it('should have disapprove method', () => {
+    expect(component.disapprove).toBeTruthy();
+  });
+
+  it('should have isApproved method', () => {
+    expect(component.isApproved).toBeTruthy();
+  });
+
+  it('should have isRepproved method', () => {
+    expect(component.isRepproved).toBeTruthy();
+  });
+
+  it('should have isPending method', () => {
+    expect(component.isPending).toBeTruthy();
+  });
+
+  it('should have isNew method', () => {
+    expect(component.isNew).toBeTruthy();
+  });
+
   it('should have procedure input', () => {
     let compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('#procedure').placeholder).toMatch('Procedimento');

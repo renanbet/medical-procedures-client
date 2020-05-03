@@ -19,4 +19,12 @@ describe('LoginService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should have login method', () => {
+    expect(service.login).toBeTruthy();
+  });
+
+  it('should have error method', () => {
+    expect(service.error).toBeTruthy();
+  });
 });

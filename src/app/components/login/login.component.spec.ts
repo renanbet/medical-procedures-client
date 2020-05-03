@@ -46,6 +46,10 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should have login method', () => {
+    expect(component.login).toBeTruthy();
+  });
+
   it('should have title', () => {
     let compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('.system-title').innerHTML).toMatch('Procedimentos médicos');

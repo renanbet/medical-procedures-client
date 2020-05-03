@@ -22,4 +22,8 @@ describe('CardCounterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have formatValue method', () => {
+    expect(component.formatValue).toBeTruthy();
+  });
 });

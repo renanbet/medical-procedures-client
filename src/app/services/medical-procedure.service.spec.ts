@@ -19,4 +19,24 @@ describe('MedicalProcedureService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should have getHeaders method', () => {
+    expect(service.getHeaders).toBeTruthy();
+  });
+
+  it('should have getProcedures method', () => {
+    expect(service.getProcedures).toBeTruthy();
+  });
+
+  it('should have insert method', () => {
+    expect(service.insert).toBeTruthy();
+  });
+
+  it('should have update method', () => {
+    expect(service.update).toBeTruthy();
+  });
+
+  it('should have error method', () => {
+    expect(service.error).toBeTruthy();
+  });
 });

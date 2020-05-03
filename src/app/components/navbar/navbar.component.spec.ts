@@ -51,6 +51,22 @@ describe('NavbarComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should have toggleMenu method', () => {
+    expect(component.toggleMenu).toBeTruthy();
+  });
+
+  it('should have logout method', () => {
+    expect(component.logout).toBeTruthy();
+  });
+
+  it('should have globalSearch method', () => {
+    expect(component.globalSearch).toBeTruthy();
+  });
+
+  it('should have cleanGlobalSearch method', () => {
+    expect(component.cleanGlobalSearch).toBeTruthy();
+  });
+
   it('should have search input', () => {
     let compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('.input').placeholder).toMatch('Buscar procedimento');

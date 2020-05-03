@@ -5,9 +5,9 @@ RUN apt-get update \
 
 ENV CHROME_BIN=chromium
 
-WORKDIR /app
+WORKDIR /home/app
 
-COPY package.json package-lock.json* ./
+COPY package*json ./
 
 RUN npm install -g @angular/cli
 RUN npm install

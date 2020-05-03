@@ -50,4 +50,19 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have search input', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.input').placeholder).toMatch('Buscar procedimento');
+  });
+
+  it('should have menu button', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.button > span > i')).toHaveClass('fa-bars');
+  });
+
+  it('should have title', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.navbar-title').innerHTML).toMatch(' Procedimentos Médicos');
+  });
 });

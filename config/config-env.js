@@ -1,7 +1,5 @@
 const fs = require('fs')
 
-require('dotenv').config()
-
 let apiURL = process.env.API_URL;
 console.log('API_URL', apiURL)
 

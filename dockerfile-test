@@ -1,0 +1,16 @@
+FROM node:10-stretch
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends chromium
+
+ENV CHROME_BIN=chromium
+
+WORKDIR /app
+
+COPY package.json package-lock.json* ./
+
+RUN npm install -g @angular/cli
+RUN npm install
+COPY . .
+
+CMD ["npm", "test"]

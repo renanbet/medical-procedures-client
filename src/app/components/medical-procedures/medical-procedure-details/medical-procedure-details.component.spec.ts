@@ -27,4 +27,44 @@ describe('MedicalProcedureDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have procedure input', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#procedure').placeholder).toMatch('Procedimento');
+  });
+
+  it('should have old input', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#old').placeholder).toMatch('Idade');
+  });
+
+  it('should have selecione gender', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('select > option:nth-child(1)').innerHTML).toMatch('Selecione');
+  });
+
+  it('should have Feminino gender', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('select > option:nth-child(2)').innerHTML).toMatch('Feminino');
+  });
+
+  it('should have Masculino gender', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('select > option:nth-child(3)').innerHTML).toMatch('Masculino');
+  });
+
+  it('should have back button', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#back > span > i')).toHaveClass('fa-arrow-left');
+  });
+
+  it('should have update button', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#update > span > i')).toHaveClass('fa-check');
+  });
+
+  it('should have Pendente button', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.button.is-info').innerHTML).toMatch('Pendente');
+  });
 });

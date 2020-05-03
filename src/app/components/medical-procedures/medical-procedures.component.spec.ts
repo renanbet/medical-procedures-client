@@ -52,6 +52,70 @@ describe('MedicalProceduresComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should have load method', () => {
+    expect(component.load).toBeTruthy();
+  });
+  
+  it('should have loadShowProcedures method', () => {
+    expect(component.loadShowProcedures).toBeTruthy();
+  });
+
+  it('should have getStatus method', () => {
+    expect(component.getStatus).toBeTruthy();
+  });
+
+  it('should have showDetails method', () => {
+    expect(component.showDetails).toBeTruthy();
+  });
+
+  it('should have closeDetails method', () => {
+    expect(component.closeDetails).toBeTruthy();
+  });
+
+  it('should have isApproved method', () => {
+    expect(component.isApproved).toBeTruthy();
+  });
+
+  it('should have isDisapproved method', () => {
+    expect(component.isDisapproved).toBeTruthy();
+  });
+
+  it('should have isPending method', () => {
+    expect(component.isPending).toBeTruthy();
+  });
+
+  it('should have filterByApproved method', () => {
+    expect(component.filterByApproved).toBeTruthy();
+  });
+
+  it('should have filterByRepproved method', () => {
+    expect(component.filterByRepproved).toBeTruthy();
+  });
+
+  it('should have filterByPending method', () => {
+    expect(component.filterByPending).toBeTruthy();
+  });
+
+  it('should have all method', () => {
+    expect(component.all).toBeTruthy();
+  });
+
+  it('should have getApprovedTotal method', () => {
+    expect(component.getApprovedTotal).toBeTruthy();
+  });
+
+  it('should have getDisapprovedTotal method', () => {
+    expect(component.getDisapprovedTotal).toBeTruthy();
+  });
+
+  it('should have getPendingTotal method', () => {
+    expect(component.getPendingTotal).toBeTruthy();
+  });
+
+  it('should have getTotal method', () => {
+    expect(component.getTotal).toBeTruthy();
+  });
+
   it('should have approved card', () => {
     let compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('.filter.approved').title).toMatch('Aprovados');
@@ -96,5 +160,4 @@ describe('MedicalProceduresComponent', () => {
     let compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('th:nth-child(4)').innerHTML).toMatch('Idade');
   });
-  
 });

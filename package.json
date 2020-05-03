@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node config/config-env && ng serve",
-    "build": "node config/config-env && ng build",
+    "start": "ng serve",
+    "build": "ng build",
     "test": "ng test --watch=false --browsers=HeadlessChrome",
     "lint": "ng lint",
     "e2e": "ng e2e"

@@ -2,7 +2,7 @@ FROM node:10-stretch as build
 
 WORKDIR /app
 
-COPY package.json package-lock.json* ./
+COPY package.json ./
 
 RUN npm install -g @angular/cli
 RUN npm install

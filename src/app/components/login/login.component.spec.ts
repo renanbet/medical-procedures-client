@@ -53,12 +53,12 @@ describe('LoginComponent', () => {
 
   it('should have username input', () => {
     let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.input').placeholder).toMatch('Login');
+    expect(compiled.querySelector('.input.login').placeholder).toMatch('Login');
   });
 
   it('should have password input', () => {
     let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.input').placeholder).toMatch('Password');
+    expect(compiled.querySelector('.input.password').placeholder).toMatch('Senha');
   });
 
   it('should have login button', () => {

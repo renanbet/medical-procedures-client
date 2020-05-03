@@ -51,4 +51,50 @@ describe('MedicalProceduresComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have approved card', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.filter.approved').title).toMatch('Aprovados');
+  });
+
+  it('should have repproved card', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.filter.approved').title).toMatch('Aprovados');
+  });
+
+  it('should have pending card', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.filter.pending').title).toMatch('Pendentes');
+  });
+
+  it('should have total card', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.filter.all').title).toMatch('Todos');
+  });
+
+  it('should have add button', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.button > span > i')).toHaveClass('fa-plus');
+  });
+
+  it('should have Status column', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('th:nth-child(1)').innerHTML).toMatch('Status');
+  });
+
+  it('should have Procedimento column', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('th:nth-child(2)').innerHTML).toMatch('Procedimento');
+  });
+
+  it('should have Sexo column', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('th:nth-child(3)').innerHTML).toMatch('Sexo');
+  });
+
+  it('should have Idade column', () => {
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('th:nth-child(4)').innerHTML).toMatch('Idade');
+  });
+  
 });

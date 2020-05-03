@@ -147,24 +147,24 @@ export class MedicalProceduresComponent implements OnInit {
   }
 
   getApprovedTotal() {
-    return this.showProcedures.filter(item => {
+    return this.procedures.filter(item => {
       return item.permitido.toLowerCase() === 'sim'
     }).length
   }
 
   getDisapprovedTotal() {
-    return this.showProcedures.filter(item => {
+    return this.procedures.filter(item => {
       return item.permitido.toLowerCase() === 'não'
     }).length
   }
 
   getPendingTotal() {
-    return this.showProcedures.filter(item => {
+    return this.procedures.filter(item => {
       return item.permitido === ''
     }).length
   }
 
   getTotal() {
-    return this.showProcedures.length
+    return this.procedures.length
   }
 }

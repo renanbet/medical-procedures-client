@@ -48,10 +48,11 @@
                         Reprovado</button>
                 </div>
             </div>
-            <div class="field" *ngIf="isRepproved()">
-                <label class="label">Motivo</label>
+            <div class="field" *ngIf="!isPending()">
+                <label class="label" *ngIf="isRepproved()">Motivo</label>
+                <label class="label" *ngIf="isApproved()">Mensagem</label>
                 <div class="control">
-                    <textarea [readonly]="!isAdmin()" class="textarea" [(ngModel)]="details.motivo" placeholder="Motivo"
+                    <textarea [readonly]="!isAdmin()" class="textarea" [(ngModel)]="details.motivo"
                         rows="3">
                     </textarea>
                 </div>

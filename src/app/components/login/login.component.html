@@ -10,12 +10,14 @@
                             (keyup.enter)="login()"
                             [(ngModel)]="username"
                             class="input login"
+                            [ngClass]="{'is-danger': error}"
                             type="text"
                             placeholder="Login">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
                     </div>
+                    <p class="help is-danger" *ngIf="error">Login ou senha inválidos</p>
                 </div>
                 <div class="field">
                     <label class="label">Senha</label>
@@ -25,12 +27,14 @@
                             [(ngModel)]="password"
                             type="password"
                             class="input password"
+                            [ngClass]="{'is-danger': error}"
                             type="text"
                             placeholder="Senha">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>
                     </div>
+                    <p class="help is-danger" *ngIf="error">Login ou senha inválidos</p>
                 </div>
                 <div class="field">
                     <div class="control">

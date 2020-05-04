@@ -8,8 +8,9 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  username : string = '';
-  password : string = '';
+  username: string = '';
+  password: string = '';
+  error: boolean = false; 
 
   constructor(private router: Router,
     private loginService: LoginService) { }
@@ -21,6 +22,8 @@ export class LoginComponent implements OnInit {
       .subscribe((data) => {
         localStorage.setItem('user', JSON.stringify(data.data));
         this.router.navigate(['/procedimentos']);
+      }, (err) => {
+        this.error = true
       })
   }
 }

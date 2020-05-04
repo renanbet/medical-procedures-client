@@ -51,7 +51,8 @@ export class MedicalProceduresComponent implements OnInit {
           idade: item.idade,
           sexo: `${item.sexo.charAt(0).toUpperCase()}${item.sexo.substring(1)}`,
           status: this.getStatus(item.permitido),
-          permitido: item.permitido
+          permitido: item.permitido,
+          motivo: item.motivo
         }
       })
       this.loadShowProcedures()

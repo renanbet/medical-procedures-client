@@ -2,11 +2,11 @@ FROM node:10-stretch as build
 
 WORKDIR /home/app
 
-COPY package*.json ./
-
 RUN npm install -g @angular/cli
-RUN npm install
+
 COPY . .
+
+RUN npm install
 
 RUN npm run build
 

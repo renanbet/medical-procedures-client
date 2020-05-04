@@ -7,10 +7,10 @@ ENV CHROME_BIN=chromium
 
 WORKDIR /home/app
 
-COPY package*json ./
+COPY . .
 
 RUN npm install -g @angular/cli
+
 RUN npm install
-COPY . .
 
 CMD ["npm", "test"]

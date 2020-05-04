@@ -15,8 +15,10 @@
                 <label class="label">Procedimento</label>
                 <div class="control">
                     <input id="procedure" (click)="$event.target.select()" [(ngModel)]="details.procedimento" class="input"
+                        [ngClass]="{'is-danger': !validate.procedimento}"
                         type="number" placeholder="Procedimento">
                 </div>
+                <p class="help is-danger" *ngIf="!validate.procedimento">Valor inválido</p>
             </div>
             <div class="field">
                 <label class="label">Sexo</label>
@@ -34,8 +36,10 @@
                 <label class="label">Idade</label>
                 <div class="control">
                     <input id="old" (click)="$event.target.select()" [(ngModel)]="details.idade" class="input" type="number"
+                        [ngClass]="{'is-danger': !validate.idade}"
                         placeholder="Idade">
                 </div>
+                <p class="help is-danger" *ngIf="!validate.idade">Valor inválido</p>
             </div>
             <div class="field">
                 <label class="label">Status</label>
@@ -53,9 +57,11 @@
                 <label class="label" *ngIf="isApproved()">Mensagem</label>
                 <div class="control">
                     <textarea [readonly]="!isAdmin()" class="textarea" [(ngModel)]="details.motivo"
+                        [ngClass]="{'is-danger': !validate.motivo}"
                         rows="3">
                     </textarea>
                 </div>
+                <p class="help is-danger" *ngIf="!validate.motivo">Valor inválido</p>
             </div>
             <div class="buttons" (click)="remove()" *ngIf="details.id !== 0 && isAdmin()">
                 <button class="button is-danger">Excluir</button>

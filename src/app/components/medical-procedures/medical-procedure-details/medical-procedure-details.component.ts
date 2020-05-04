@@ -19,6 +19,12 @@ export class MedicalProcedureDetailsComponent implements OnInit {
   }
   public title = 'Novo procedimento'
 
+  public validate = {
+    procedimento: true,
+    idade: true,
+    motivo: true
+  }
+
   constructor(private medicalProceduresService: MedicalProcedureService) { }
 
   ngOnInit(): void {
@@ -28,6 +34,9 @@ export class MedicalProcedureDetailsComponent implements OnInit {
   }
 
   save(): void {
+    if (!this.isValid()) {
+      return
+    }
     if (this.details.id !== 0) {
       this.medicalProceduresService.update(this.details.id, this.details).subscribe(() => {
         this.close.next(true)
@@ -83,5 +92,25 @@ export class MedicalProcedureDetailsComponent implements OnInit {
     this.medicalProceduresService.remove(this.details.id).subscribe(() => {
       this.close.next(true)
     });
+  }
+
+  isValid(): boolean {
+    this.validate.procedimento = true
+    this.validate.idade = true
+    this.validate.motivo = true
+    let valid = true
+    if (this.details.procedimento > 9999999) {
+      this.validate.procedimento = false
+      valid = false
+    }
+    if (this.details.idade > 999) {
+      this.validate.idade = false
+      valid = false
+    }
+    if (this.details.motivo.length > 254) {
+      this.validate.motivo = false
+      valid = false
+    }
+    return valid
   }
 }

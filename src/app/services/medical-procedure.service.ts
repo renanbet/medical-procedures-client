@@ -42,6 +42,13 @@ export class MedicalProcedureService {
     )
   }
 
+  remove(id): Observable<any> {
+    let API_URL = `${this.apiUrl}/procedures/${id}`;
+    return this.http.delete<MedicalProcedure>(API_URL, this.getHeaders()).pipe(
+      catchError(this.error)
+    )
+  }
+
   error(error: HttpErrorResponse) {
     localStorage.removeItem('user')
     if (error.status === 403) {

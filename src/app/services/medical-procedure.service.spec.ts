@@ -36,6 +36,10 @@ describe('MedicalProcedureService', () => {
     expect(service.update).toBeTruthy();
   });
 
+  it('should have remove method', () => {
+    expect(service.remove).toBeTruthy();
+  });
+
   it('should have error method', () => {
     expect(service.error).toBeTruthy();
   });

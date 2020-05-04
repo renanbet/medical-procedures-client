@@ -68,6 +68,10 @@ describe('MedicalProcedureDetailsComponent', () => {
     expect(component.isNew).toBeTruthy();
   });
 
+  it('should have remove method', () => {
+    expect(component.remove).toBeTruthy();
+  });
+
   it('should have procedure input', () => {
     let compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('#procedure').placeholder).toMatch('Procedimento');

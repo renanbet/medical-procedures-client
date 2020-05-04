@@ -78,4 +78,10 @@ export class MedicalProcedureDetailsComponent implements OnInit {
   isNew(): boolean {
     return this.details.id === 0
   }
+
+  remove(): void {
+    this.medicalProceduresService.remove(this.details.id).subscribe(() => {
+      this.close.next(true)
+    });
+  }
 }

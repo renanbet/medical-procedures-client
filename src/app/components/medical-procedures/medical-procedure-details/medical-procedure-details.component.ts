@@ -1,6 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MedicalProcedureService } from 'src/app/services/medical-procedure.service';
 import { MedicalProcedure } from 'src/app/models/medical-procedure';
+import { Store } from '@ngrx/store';
+import { showToast } from 'src/app/reducers/utilities';
+import { Toast } from 'src/app/models/toast.model'
+import { ToastType } from 'src/app/models/toast-type.model';
 
 @Component({
   selector: 'app-medical-procedure-details',
@@ -17,6 +21,7 @@ export class MedicalProcedureDetailsComponent implements OnInit {
     sexo: '',
     motivo: ''
   }
+  public loading = false
   public title = 'Novo procedimento'
 
   public validate = {
@@ -25,7 +30,9 @@ export class MedicalProcedureDetailsComponent implements OnInit {
     motivo: true
   }
 
-  constructor(private medicalProceduresService: MedicalProcedureService) { }
+  constructor(
+    private medicalProceduresService: MedicalProcedureService,
+    private store:Store) { }
 
   ngOnInit(): void {
     if (this.details.id !== 0) {
@@ -37,12 +44,18 @@ export class MedicalProcedureDetailsComponent implements OnInit {
     if (!this.isValid()) {
       return
     }
+    this.loading = true
     if (this.details.id !== 0) {
       this.medicalProceduresService.update(this.details.id, this.details).subscribe(() => {
+        this.store.dispatch(new showToast(new Toast('Procedimento atualizado', new ToastType().success)))
         this.close.next(true)
+      }, (err) => {
+        let message = err.error.error ? err.error.error : 'Ocorreu um erro inesperado!'
+        this.store.dispatch(new showToast(new Toast(message, new ToastType().error)))
       });
     } else {
       this.medicalProceduresService.insert(this.details).subscribe(() => {
+        this.store.dispatch(new showToast(new Toast('Procedimento adicionado', new ToastType().success)))
         this.close.next(true)
       });
     }
@@ -89,6 +102,7 @@ export class MedicalProcedureDetailsComponent implements OnInit {
   }
 
   remove(): void {
+    this.loading = true
     this.medicalProceduresService.remove(this.details.id).subscribe(() => {
       this.close.next(true)
     });

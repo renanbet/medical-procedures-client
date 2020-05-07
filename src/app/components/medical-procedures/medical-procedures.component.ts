@@ -21,7 +21,7 @@ export class MedicalProceduresComponent implements OnInit {
   public procedures = []
   public showProcedures = []
   public details: MedicalProcedure = null
-  
+
   public filterProcedures = ''
   public search$: Observable<any>
   public filter: string = ''
@@ -61,8 +61,8 @@ export class MedicalProceduresComponent implements OnInit {
 
   loadShowProcedures () {
     this.showProcedures = this.procedures.filter(item => {
-      return this.filterProcedures ? 
-              item.procedimento.toString().includes(this.filterProcedures) : 
+      return this.filterProcedures ?
+              item.procedimento.toString().includes(this.filterProcedures) :
               true
     })
     switch (this.filter) {
@@ -71,13 +71,13 @@ export class MedicalProceduresComponent implements OnInit {
           return item.permitido.toLowerCase() === 'sim'
         })
         break;
-      
+
       case this.filterType.Disapproved:
         this.showProcedures = this.showProcedures.filter(item => {
           return item.permitido.toLowerCase() === 'não'
         })
         break;
-    
+
       case this.filterType.Pending:
         this.showProcedures = this.showProcedures.filter(item => {
           return item.permitido.toLowerCase() === ''
@@ -90,7 +90,7 @@ export class MedicalProceduresComponent implements OnInit {
   }
 
   getStatus(permitted) {
-    return permitted.toLowerCase() === 'sim' ? 'Aprovado' : 
+    return permitted.toLowerCase() === 'sim' ? 'Aprovado' :
               permitted.toLowerCase() === 'não' ? 'Reprovado' : 'Pendente'
   }
 

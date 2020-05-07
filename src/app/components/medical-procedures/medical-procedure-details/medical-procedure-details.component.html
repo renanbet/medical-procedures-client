@@ -63,14 +63,14 @@
                 </div>
                 <p class="help is-danger" *ngIf="!validate.motivo">Valor inválido</p>
             </div>
-            <div class="buttons" (click)="remove()" *ngIf="details.id !== 0 && isAdmin()">
+            <div class="buttons" [ngClass]="{'is-loading': loading}" (click)="remove()" *ngIf="details.id !== 0 && isAdmin()">
                 <button class="button is-danger">Excluir</button>
             </div>
         </div>
     </div>
 </div>
 <div class="buttons btn-fixed">
-    <button id="update" (click)="save()" class="button is-primary">
+    <button id="update" [ngClass]="{'is-loading': loading}"  (click)="save()" class="button is-primary">
         <span class="icon is-large">
             <i class="fas fa-2x fa-check"></i>
         </span>

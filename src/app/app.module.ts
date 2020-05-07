@@ -20,7 +20,8 @@ import { StoreModule } from '@ngrx/store';
 import { reducer as searchReducer } from './reducers/search'
 import { reducer as utilitiesReducer } from './reducers/utilities'
 
-import { environment } from 'src/environments/environment'
+import { environment } from 'src/environments/environment';
+import { ToastComponent } from './components/toast/toast.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { environment } from 'src/environments/environment'
     MedicalProceduresComponent,
     CardCounterComponent,
     LoginComponent,
-    MedicalProcedureDetailsComponent
+    MedicalProcedureDetailsComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,8 @@ import { MedicalProcedureService } from './services/medical-procedure.service'
 import { HttpClientModule } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
-import { reducer as searchReducer } from './ngrx'
+import { reducer as searchReducer } from './reducers/search'
+import { reducer as utilitiesReducer } from './reducers/utilities'
 
 import { environment } from 'src/environments/environment'
 
@@ -39,7 +40,8 @@ import { environment } from 'src/environments/environment'
     HttpClientModule,
     StoreModule.forRoot({}, {}),
     StoreModule.forRoot({
-      searchReducer
+      searchReducer,
+      utilitiesReducer
     })
   ],
   providers: [LoginService, MedicalProcedureService,

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store'
-import { SearchModel } from './models/search.model'
+import { SearchModel } from '../models/search.model'
 
 class ActionModel implements Action {
     type: string
@@ -21,7 +21,7 @@ export const reducer = (state = INITIAL_STATE, action: ActionModel) => {
     switch (action.type) {
         case ActionTypes.SetSearch:
             return { ...state, search: action.payload }
-    
+
         default:
             return state
     }

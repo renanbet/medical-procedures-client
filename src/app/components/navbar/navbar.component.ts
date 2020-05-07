@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { setSearch } from 'src/app/ngrx';
+import { setSearch } from 'src/app/reducers/search';
 import { Store } from '@ngrx/store';
 
 @Component({

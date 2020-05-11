@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 import { provideRoutes, Routes, RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
-import { reducer as searchReducer } from 'src/app/ngrx'
+import { reducer as searchReducer } from '../../reducers/search'
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 

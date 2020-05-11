@@ -5,6 +5,9 @@ import { MedicalProcedureDetailsComponent } from './medical-procedure-details.co
 
 import { environment } from 'src/environments/environment'
 
+import { StoreModule } from '@ngrx/store';
+import { reducer as showToast } from '../../../reducers/utilities'
+
 describe('MedicalProcedureDetailsComponent', () => {
   let component: MedicalProcedureDetailsComponent;
   let fixture: ComponentFixture<MedicalProcedureDetailsComponent>;
@@ -12,7 +15,10 @@ describe('MedicalProcedureDetailsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MedicalProcedureDetailsComponent ],
-      imports: [ HttpClientTestingModule ],
+      imports: [ HttpClientTestingModule,
+        StoreModule.forRoot({
+          showToast
+        }) ],
       providers: [ { provide: 'API_URL', useValue: environment.apiUrl } ]
     })
     .compileComponents();

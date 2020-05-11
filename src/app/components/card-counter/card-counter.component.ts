@@ -14,7 +14,7 @@ export class CardCounterComponent {
   @Input() isDanger : boolean = false;
 
   formatValue() {
-    let format = `${this.total}`
+    let format = this.total ? `${this.total}` : ''
     return format.length < 2 ? `0${this.total}` : this.total
   }
 }

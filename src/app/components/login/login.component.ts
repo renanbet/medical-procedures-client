@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     private utilitiesReducer: Store<{utilitiesReducer}>) {
       this.utilitiesReducer.pipe(
         select('utilitiesReducer')).subscribe((data:UtilitiesModel) => {
-          if (data.loading !== undefined) {
+          if (data && data.loading !== undefined) {
             this.showLoading = data.loading
           }
         })

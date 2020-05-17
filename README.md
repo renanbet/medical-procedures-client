@@ -1,4 +1,4 @@
-# Medical procedures client
+# Angular client
 
 ## More instructions
 

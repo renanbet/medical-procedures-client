@@ -2,7 +2,7 @@
 
 ## More instructions
 
-https://github.com/renanbet/medical-procedures-compose
+https://github.com/renanbet/crud-application-docker-compose
 
 
 ## The app
